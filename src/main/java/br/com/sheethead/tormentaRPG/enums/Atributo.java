@@ -1,4 +1,4 @@
-package br.com.sheethead.enums;
+package br.com.sheethead.tormentaRPG.enums;
 
 public enum Atributo {
 

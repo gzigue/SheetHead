@@ -1,4 +1,4 @@
-package br.com.sheethead.domain;
+package br.com.sheethead.tormentaRPG.domain;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.sheethead.enums.Atributo;
+import br.com.sheethead.tormentaRPG.enums.Atributo;
 
 @Entity
 public class Pericia implements Serializable {
@@ -20,7 +20,7 @@ public class Pericia implements Serializable {
 	private String nome;
 	private Integer atributo;
 	private Integer atributoAlternativo = null;
-	private Integer penalidadeDeArmadura;
+	private boolean penalidadeDeArmadura;
 	private boolean somenteTreinado;
 	private Integer graduacao;
 	private Integer modificador;
@@ -30,7 +30,7 @@ public class Pericia implements Serializable {
 	public Pericia() {
 	}
 	
-	public Pericia(Integer id, String nome, Atributo atributo, Integer penalidadeDeArmadura,
+	public Pericia(Integer id, String nome, Atributo atributo, boolean penalidadeDeArmadura,
 			boolean somenteTreinado) {
 		super();
 		this.id = id;
@@ -72,11 +72,11 @@ public class Pericia implements Serializable {
 		this.atributoAlternativo = atributoAlternativo;
 	}
 
-	public Integer getPenalidadeDeArmadura() {
+	public boolean getPenalidadeDeArmadura() {
 		return penalidadeDeArmadura;
 	}
 
-	public void setPenalidadeDeArmadura(Integer penalidadeDeArmadura) {
+	public void setPenalidadeDeArmadura(boolean penalidadeDeArmadura) {
 		this.penalidadeDeArmadura = penalidadeDeArmadura;
 	}
 
