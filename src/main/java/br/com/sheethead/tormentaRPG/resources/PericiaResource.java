@@ -1,31 +1,30 @@
 package br.com.sheethead.tormentaRPG.resources;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sheethead.tormentaRPG.domain.Pericia;
-import br.com.sheethead.tormentaRPG.enums.Atributo;
+import br.com.sheethead.tormentaRPG.services.PericiaService;
 
 @RestController
 @RequestMapping(value="/pericias")
 public class PericiaResource {
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> find() {
+	@Autowired
+	private PericiaService service; 
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
+		Pericia obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
+				
+//		Pericia cura = new Pericia(1, "Cura", Atributo.SAB, false, false);
+//		Pericia ladinagem = new Pericia(2, "Ladinagem", Atributo.DES, true, true);
 		
-		Pericia cura = new Pericia(1, "Cura", Atributo.SAB, false, false);
-		Pericia ladinagem = new Pericia(2, "Ladinagem", Atributo.DES, true, true);
-		
-		List<Pericia> pericias = new ArrayList<>();
-		pericias.addAll(Arrays.asList(cura, ladinagem));
-		
-		return ResponseEntity.ok().body(pericias);	
 	}
 
 }
